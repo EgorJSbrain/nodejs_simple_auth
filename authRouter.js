@@ -6,8 +6,8 @@ const authMiddleware = require('./middlewaree/authMiddleware')
 const roleMiddleware = require('./middlewaree/roleMiddleware')
 
 router.post('/registration', [
-    check('username', "Имя пользователя не может быть пустым").notEmpty(),
-    check('password', "Пароль должен быть больше 4 и меньше 10 символов").isLength({min:4, max:10})
+    check('username', "User name is empty").notEmpty(),
+    check('password', "Password shold be more than 4 and shorter than 10 symbols").isLength({min:4, max:10})
 ], controller.registration)
 router.post('/login', controller.login)
 router.get('/users', roleMiddleware(["ADMIN"]), controller.getUsers)
